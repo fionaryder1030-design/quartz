@@ -16,7 +16,7 @@ configuration:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: "Comic Neue"
+      header: "Comic Sans MS"
       body: Special Elite
       code: IBM Plex Mono
     colors:
@@ -111,7 +111,7 @@ plugins:
   - source: "@quartz-community/quartz-fonts"
     enabled: true
     options:
-      header: "Comic Neue"
+      header: "Comic Sans MS"
       body: Special Elite
       code: IBM Plex Mono
       fontOrigin: googleFonts
