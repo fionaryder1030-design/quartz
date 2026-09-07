@@ -47,7 +47,7 @@ export default (() => {
         {coreScript && coreScript.contentType === "external" && (
           <link rel="preload" href={coreScript.src} as="script" />
         )}
-        {cfg.theme.cdnCaching && cfg.theme.fontOrigin === "googleFonts" && (
+        {cfg.theme.cdnCaching && cfg.theme.fontOrigin === "googleFonts" && googleFontHref(cfg.theme) && (
           <>
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" />

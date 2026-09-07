@@ -87,13 +87,52 @@ function formatFontSpecification(
   return encodedName
 }
 
+// Common system/web-safe font names that are not available on Google Fonts.
+// Requesting one of these alongside real Google Fonts in a single batched
+// css2 request causes Google to return a degraded response for the *entire*
+// request (not just the unresolvable family), so these must be excluded
+// from the Google Fonts fetch while still being used in the CSS output.
+const NON_GOOGLE_FONT_NAMES = new Set([
+  "comic sans ms",
+  "comic sans",
+  "arial",
+  "helvetica",
+  "times new roman",
+  "times",
+  "georgia",
+  "verdana",
+  "courier new",
+  "courier",
+  "trebuchet ms",
+  "impact",
+  "cursive",
+  "sans-serif",
+  "serif",
+  "monospace",
+  "system-ui",
+])
+
+function isGoogleFontEligible(spec: FontSpecification): boolean {
+  const name = getFontSpecificationName(spec).toLowerCase()
+  return !NON_GOOGLE_FONT_NAMES.has(name)
+}
+
 export function googleFontHref(theme: Theme) {
   const { header, body, code } = theme.typography
-  const headerFont = formatFontSpecification("header", header)
-  const bodyFont = formatFontSpecification("body", body)
-  const codeFont = formatFontSpecification("code", code)
+  const families = [
+    { type: "header" as const, spec: header },
+    { type: "body" as const, spec: body },
+    { type: "code" as const, spec: code },
+  ]
+    .filter(({ spec }) => isGoogleFontEligible(spec))
+    .map(({ type, spec }) => formatFontSpecification(type, spec))
 
-  return `https://fonts.googleapis.com/css2?family=${headerFont}&family=${bodyFont}&family=${codeFont}&display=swap`
+  if (families.length === 0) {
+    return ""
+  }
+
+  const familyParams = families.map((f) => `family=${f}`).join("&")
+  return `https://fonts.googleapis.com/css2?${familyParams}&display=swap`
 }
 
 export function googleFontSubsetHref(theme: Theme, text: string) {
