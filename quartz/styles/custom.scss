@@ -4,6 +4,16 @@
 
 // retro/zine touches for comic sads
 
+// Bug workaround: the quartz-fonts plugin hardcodes --font-interface to a
+// generic system font stack instead of aliasing it to the configured body
+// font. Obsidian-compat CSS uses --font-interface for plain <p>, <blockquote>,
+// <dd>/<dt>, <table> etc., which was making body text (like the homepage
+// tagline) render in a system sans-serif instead of Special Elite. This file
+// compiles unlayered, so it always wins over the layered plugin CSS.
+:root {
+  --font-interface: var(--bodyFont);
+}
+
 // give the main content a taped-down zine-page feel
 .center article {
   background-color: var(--light);
