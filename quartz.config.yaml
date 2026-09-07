@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: Quartz 5
+  pageTitle: comic sads
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
@@ -16,7 +16,7 @@ configuration:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: "Comic Sans MS"
+      header: "Comic Neue"
       body: Special Elite
       code: IBM Plex Mono
     colors:
@@ -111,7 +111,7 @@ plugins:
   - source: "@quartz-community/quartz-fonts"
     enabled: true
     options:
-      header: "Comic Sans MS"
+      header: "Comic Neue"
       body: Special Elite
       code: IBM Plex Mono
       fontOrigin: googleFonts

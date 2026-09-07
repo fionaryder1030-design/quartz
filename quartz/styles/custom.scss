@@ -24,6 +24,16 @@ article h1 {
   text-transform: lowercase;
 }
 
+// date / read-time stamp gets its own distinct third font --
+// a clean stamped-date feel, separate from the header and body fonts
+.content-meta {
+  font-family: var(--codeFont);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
 // links get an underline that pops instead of a subtle one
 article a:not(.internal):not(.tag-link) {
   text-decoration-thickness: 2px;
