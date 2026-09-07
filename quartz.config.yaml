@@ -110,6 +110,12 @@ plugins:
     order: 92
   - source: "@quartz-community/quartz-fonts"
     enabled: true
+    options:
+      header: "Comic Sans MS"
+      body: Special Elite
+      code: IBM Plex Mono
+      fontOrigin: googleFonts
+      useThemeFonts: false
   - source: "@quartz-themes/core"
     enabled: true
     options:
