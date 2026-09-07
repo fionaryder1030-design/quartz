@@ -1,3 +1,43 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+
+// retro/zine touches for comic sads
+
+// give the main content a taped-down zine-page feel
+.center article {
+  background-color: var(--light);
+  border: 2px solid var(--dark);
+  border-radius: 8px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 5px 5px 0 var(--secondary);
+}
+
+// chunky, poster-ish headline energy
+.article-title,
+article h1,
+article h2 {
+  letter-spacing: 0.01em;
+}
+
+article h1 {
+  text-transform: lowercase;
+}
+
+// links get an underline that pops instead of a subtle one
+article a:not(.internal):not(.tag-link) {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--tertiary);
+}
+
+article a:not(.internal):not(.tag-link):hover {
+  text-decoration-color: var(--secondary);
+}
+
+// frame the are.na embed like a taped-in photo
+article iframe {
+  border: 2px solid var(--dark);
+  border-radius: 6px;
+  box-shadow: 3px 3px 0 var(--tertiary);
+}
