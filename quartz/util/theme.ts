@@ -78,11 +78,13 @@ function formatFontSpecification(
     features.push(`wght@${weightSpec}`)
   }
 
+  const encodedName = spec.name.replace(/ /g, "+")
+
   if (features.length > 0) {
-    return `${spec.name}:${features.join(",")}`
+    return `${encodedName}:${features.join(",")}`
   }
 
-  return spec.name
+  return encodedName
 }
 
 export function googleFontHref(theme: Theme) {
